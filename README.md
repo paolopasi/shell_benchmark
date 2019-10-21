@@ -15,26 +15,26 @@ Be conscientious with the N value, by starting at a small amount.
 
 Example of a result:
 
-$ ./bencher.sh 100 increments.sh
-  Loading tests file increments.sh
-  Iterating 100 times for 6 methods
- 12 ms for test_1
- 13 ms for test_2
- 13 ms for test_3
- 12 ms for test_6
- 12 ms for test_4
+$ ./bencher.sh 100 increments.sh\
+  Loading tests file increments.sh\
+  Iterating 100 times for 6 methods\
+ 12 ms for test_1\
+ 13 ms for test_2\
+ 13 ms for test_3\
+ 12 ms for test_6\
+ 12 ms for test_4\
  11 ms for test_5
 
- ---Sorted---
- 11 test_5
- 12 test_1
- 12 test_4
- 12 test_6
- 13 test_2
+ ---Sorted---\
+ 11 test_5\
+ 12 test_1\
+ 12 test_4\
+ 12 test_6\
+ 13 test_2\
  13 test_3
 
- ---Best---
- test_5 ()
- {
-     ((++i))
+ ---Best---\
+ test_5 ()\
+ {\
+     ((++i))\
  }
