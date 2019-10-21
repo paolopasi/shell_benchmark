@@ -45,7 +45,7 @@ do
 done
 echo
 echo "---Sorted---"
-sorted=`(IFS=$'\n'; echo "${results[*]}")|sort -k 1`
+sorted=`(IFS=$'\n'; echo "${results[*]}")|sort -n -k 1`
 echo "$sorted"
 echo
 echo "---Best---"
