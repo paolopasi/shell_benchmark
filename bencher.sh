@@ -6,25 +6,21 @@
 (
 	function stamp {
 		now=`date +%s%3N`
-		diff=`echo "$((now-last))"`
-		last=`echo $now`	
+		diff=$((now-last))
+		last=$now
 	}
-	function result {
-		#body=`declare -f $1`
-		name="$1"
-		echo "$diff ms for $name $body"
-		#printf %.6f\\n "$((10**9 * diff/max))e-9"	
-		results[((bench++))]="$diff $name"
+	function add_result {		
+		echo "$diff ms for $1"		
+		results[((benched++))]="$diff $1"
 	}
 	function bench {
 		$reset_func	
 		stamp
 		for c in $sequence
-		do
+		do 
 			$1
 		done
-		stamp
-		result "$1"
+		stamp		
 	}
 	function main {
 		max=$1
@@ -39,10 +35,11 @@
 		results=()
 		echo " Loading tests file $test_file"
 		. $test_file
-		echo " Iterating $max times for $tests_count methods"
+		echo " Iterating $max times for $tests_count methods"		
 		for t in $tests
 		do
 			bench $t
+			add_result $t
 		done
 		echo
 		echo "---Sorted---"
