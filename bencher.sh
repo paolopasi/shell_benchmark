@@ -1,9 +1,8 @@
 #!/bin/bash
-## Usage bencher N executable.sh
-## Looks for test_* functions defined in executable.sh
-## and runs each of them N times.
-## Also looks for a reset function inside executable.sh 
-## to reset states before new function cycle
+## Usage: ./bencher.sh N executable.sh
+##
+## See README.md for more details
+## https://github.com/paolopasi/shell_benchmark
 (
 	function stamp {
 		now=`date +%s%3N`
