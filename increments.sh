@@ -20,4 +20,6 @@ function test_4 {
 function test_5 {
 	((++i))
 }
-reset
+function test_with_name {
+	((i+=1))
+}
