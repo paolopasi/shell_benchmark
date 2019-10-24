@@ -16,7 +16,7 @@
 	function bench {
 		$reset_func
 		stamp
-		for ((c=0;c++<$max;))
+		for ((c=-$max;c++<0;))
 		do
 			$1
 		done
