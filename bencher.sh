@@ -6,8 +6,8 @@
 (
 	function stamp {
 		now=`date +%s%3N`
-		diff=$((now-last))
-		last=$now
+		diff=now-last
+		last=now
 	}
 	function add_result {
 		echo "$diff ms for $1"
@@ -16,17 +16,18 @@
 	function bench {
 		$reset_func
 		stamp
-		for ((c=-$max;c++<0;))
+		for ((c=-max;c++<0;))
 		do
 			$1
 		done
 		stamp
 	}
 	function main {
-		max=$1; test_file=$2
-		last=`date +%s%3N`
-		now=0
-		diff=0
+		test_file=$2
+		declare -i max=$1
+		declare -i last=`date +%s%3N`
+		declare -i now=0
+		declare -i diff=0
 		tests=`grep  '^function test_' $test_file | cut -d ' ' -f 2`
 		tests_count=`echo $tests | wc -w`
 		reset_func=`grep  '^function reset' $test_file | cut -d ' ' -f 2`
