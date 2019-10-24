@@ -9,23 +9,21 @@
 		diff=$((now-last))
 		last=$now
 	}
-	function add_result {		
-		echo "$diff ms for $1"		
-		results[((benched++))]="$diff $1"
+	function add_result {
+		echo "$diff ms for $1"
+		results+=("$diff $1")
 	}
 	function bench {
-		$reset_func	
+		$reset_func
 		stamp
-		for c in $sequence
-		do 
+		for ((c=0;c++<$max;))
+		do
 			$1
 		done
-		stamp		
+		stamp
 	}
 	function main {
-		max=$1
-		test_file=$2
-		sequence=`seq $max`
+		max=$1; test_file=$2
 		last=`date +%s%3N`
 		now=0
 		diff=0
@@ -35,7 +33,7 @@
 		results=()
 		echo " Loading tests file $test_file"
 		. $test_file
-		echo " Iterating $max times for $tests_count methods"		
+		echo " Iterating $max times for $tests_count methods"
 		for t in $tests
 		do
 			bench $t
